@@ -26,4 +26,8 @@ app.get('/snct3', (req, res) => {
 });
 
 
+app.get('/api/resumos-simples', (req, res) => {
+    res.json(resumosDB);
+});
+
 module.exports = app;
