@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana Nacional de Ciência e Tecnologia do IFNMG Campus Salinas</title>
-
+    <title>II Semana Nacional de Ciência e Tecnologia do IFNMG Campus Salinas</title>
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -16,15 +17,15 @@
     <nav class="main-nav">
         <ul>
             <li><a href="#apresentacao">Apresentação</a></li>
+            <li><a href="#identidade-visual">Identidade Visual</a></li>
+            <li><a href="#resumos">Resumos Publicados</a></li>
             <li><a href="#expediente">Expediente</a></li>
-            <li><a href="#normas">Normas para Publicação</a></li>
-            <li><a href="#edicoes">Edições dos Fascículos</a></li>
         </ul>
     </nav>
 
     <div class="container">
         
-       <div class="banner">
+        <div class="banner">
             <h2>II Semana Nacional de Ciência e Tecnologia</h2>
             <p><strong>Tema:</strong> "Biomas do Brasil: Diversidade, Saberes e Tecnologias Sociais"<br>
             <em>18 a 20 de Novembro de 2024 • IFNMG Campus Salinas</em></p>
@@ -45,6 +46,26 @@
             <p>A arte oficial foi criada pelo discente <strong>Eduardo William Sousa</strong> (1º ano do Curso Técnico em Informática).</p>
         </section>
 
+        <section id="resumos">
+            <h2>Resumos Publicados (Anais)</h2>
+            <p>Confira abaixo a listagem de trabalhos e resumos simples publicados nesta edição do evento:</p>
+            
+            <table class="tabela-resumos">
+                <thead>
+                    <tr>
+                        <th>Título do Trabalho</th>
+                        <th>Autores</th>
+                        <th style="width: 110px; text-align: center;">Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-tabela-resumos">
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding: 20px;">Carregando resumos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
         <section id="expediente">
             <h2>Histórico de Realização</h2>
             <ul>
@@ -56,10 +77,14 @@
         </section>
 
         <div style="text-align: center; margin-top: 40px;">
-            <a href="../index.html" style="background-color: #2b5c9d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+            <a href="index.html" style="background-color: #2b5c9d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
                 <i class="fa-solid fa-arrow-left"></i> Voltar para a Página Principal
             </a>
-        </div>        <script>
+        </div> 
+        
+    </div>
+
+    <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const tbody = document.getElementById('corpo-tabela-resumos');
             
@@ -97,3 +122,5 @@
             }
         });
     </script>
+</body>
+</html>

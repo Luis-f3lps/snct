@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I Semana Nacional de Ciência e Tecnologia do IFNMG Campus Salinas</title>
+        <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
@@ -83,3 +85,45 @@
    
 </body>
 </html>
+<script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const tbody = document.getElementById('corpo-tabela-resumos');
+            
+            try {
+                // Puxa todos os resumos do app.js
+                const resposta = await fetch('/api/resumos-simples');
+                const todosResumos = await resposta.json();
+                
+                // O FILTRO DA SNCT 1 É AQUI: Pega só os resumos onde o link_pdf tem "snct1/"
+                const resumosDesteEvento = todosResumos.filter(resumo => 
+                    resumo.link_pdf && resumo.link_pdf.includes('snct1/')
+                );
+                
+                tbody.innerHTML = ''; 
+                
+                if (resumosDesteEvento.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" style="text-align: center;">Nenhum resumo encontrado para este evento.</td></tr>';
+                    return;
+                }
+                
+                resumosDesteEvento.forEach(resumo => {
+                    const tr = document.createElement('tr');
+                    
+                    // Se o link já for completo (http), usa ele, se não, adiciona a / na frente
+                    const urlFinal = resumo.link_pdf.startsWith('http') ? resumo.link_pdf : `/${resumo.link_pdf}`;
+                    
+                    tr.innerHTML = `
+                        <td><strong>${resumo.titulo}</strong></td>
+                        <td>${resumo.autores}</td>
+                        <td style="text-align: center;"><a href="${urlFinal}" target="_blank" class="btn-pdf">Ver PDF</a></td>
+                    `;
+                    
+                    tbody.appendChild(tr);
+                });
+                
+            } catch (erro) {
+                console.error("Erro:", erro);
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: red;">Erro ao carregar os resumos.</td></tr>';
+            }
+        });
+    </script>
