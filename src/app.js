@@ -2,7 +2,7 @@
 const path = require('path');
 
 // Importa o seu arquivo database.js
-const resumosDB = require('./database.js'); 
+const resumosDB = require('../database.js'); 
 
 const app = express();
 
