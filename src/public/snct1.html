@@ -4,49 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I Semana Nacional de Ciência e Tecnologia do IFNMG Campus Salinas</title>
-    <style>
-        /* Estilos Globais */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; background-color: #f9f9f9; line-height: 1.6; }
-
-        /* Cabeçalho */
-        .top-header { background-color: #ffffff; padding: 20px 40px; display: flex; align-items: center; justify-content: flex-start; border-bottom: 2px solid #eaeaea; }
-        .logo-placeholder { background-color: #1a4a8c; color: white; font-weight: bold; font-size: 24px; padding: 10px 20px; border-radius: 5px; margin-right: 20px; }
-        .site-title { font-family: 'Georgia', serif; font-size: 24px; color: #1a4a8c; font-weight: normal; }
-
-        /* Barra de Navegação */
-        .main-nav { background-color: #2b5c9d; }
-        .main-nav ul { list-style: none; display: flex; justify-content: center; max-width: 1200px; margin: 0 auto; }
-        .main-nav a { display: block; color: #ffffff; text-decoration: none; padding: 15px 25px; font-size: 15px; transition: background-color 0.3s; }
-        .main-nav a:hover { background-color: #1a4a8c; text-decoration: underline; }
-
-        /* Conteúdo Principal */
-        .container { max-width: 1000px; margin: 40px auto; background-color: #ffffff; padding: 40px; box-shadow: 0 0 10px rgba(0,0,0,0.05); border-radius: 4px; }
-        section { margin-bottom: 50px; }
-        h2 { font-family: 'Georgia', serif; color: #2b5c9d; border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-bottom: 20px; font-size: 28px; }
-        p { margin-bottom: 15px; text-align: justify; }
-        ul { margin-left: 20px; margin-bottom: 15px; }
-
-        .banner { width: 100%; padding: 40px 20px; background-color: #e6eef5; display: flex; align-items: center; justify-content: center; border: 2px dashed #b0c4de; margin-bottom: 40px; text-align: center; color: #666; flex-direction: column; }
-        
-        /* Links das Palestras */
-        .edicoes-list a { color: #2b5c9d; font-weight: bold; text-decoration: none; }
-        .edicoes-list a:hover { text-decoration: underline; }
-        .edicoes-list li { background-color: #f4f8fc; padding: 15px; margin-bottom: 10px; border-left: 4px solid #2b5c9d; list-style: none; }
-        .edicoes-list span { display: block; color: #555; font-size: 14px; margin-top: 5px; }
-
-        /* Estilos da Tabela de Resumos (NOVO) */
-        .tabela-resumos { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
-        .tabela-resumos th, .tabela-resumos td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        .tabela-resumos th { background-color: #2b5c9d; color: white; }
-        .tabela-resumos tr:nth-child(even) { background-color: #f9f9f9; }
-        .tabela-resumos tr:hover { background-color: #f1f1f1; }
-        .btn-pdf { background-color: #d9534f; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 12px; display: inline-block; }
-        .btn-pdf:hover { background-color: #c9302c; }
-
-        /* Rodapé */
-        footer { background-color: #222; color: #ccc; text-align: center; padding: 20px; font-size: 13px; }
-    </style>
 </head>
 <body>
 
@@ -123,58 +80,6 @@
         <p>Anais e Registros do Evento - 2021</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const tbody = document.getElementById('corpo-tabela-resumos');
-            
-            try {
-                // Faz a requisição para a sua API (certifique-se de que a rota no app.js está retornando o conteúdo do database.js)
-                const resposta = await fetch('/api/resumos-simples');
-                
-                if (!resposta.ok) {
-                    throw new Error('Erro ao buscar os dados');
-                }
-                
-                const todosResumos = await resposta.json();
-                
-                // Filtra APENAS os resumos que pertencem a este evento (SNCT 1). 
-                // Assumindo que no seu banco de dados, o SNCT 1 tem evento_id = 1 (ajuste se for outro ID ou nome)
-                const resumosDesteEvento = todosResumos.filter(resumo => resumo.evento_id === 1);
-                
-                // Limpa a mensagem de "Carregando..."
-                tbody.innerHTML = '';
-                
-                if (resumosDesteEvento.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="3" style="text-align: center;">Nenhum resumo encontrado para este evento.</td></tr>';
-                    return;
-                }
-                
-                // Preenche a tabela com os resumos filtrados
-                resumosDesteEvento.forEach(resumo => {
-                    const tr = document.createElement('tr');
-                    
-                    // Formata o link do PDF (se existir)
-                    let linkHtml = '<span style="color: #999;">Indisponível</span>';
-                    if (resumo.link_pdf && resumo.link_pdf.trim() !== '') {
-                        // Se o link já for http, usa ele direto, senão adiciona a base /arquivos/ ou /public/
-                        const urlFinal = resumo.link_pdf.startsWith('http') ? resumo.link_pdf : `/${resumo.link_pdf}`;
-                        linkHtml = `<a href="${urlFinal}" target="_blank" class="btn-pdf">Ver PDF</a>`;
-                    }
-                    
-                    tr.innerHTML = `
-                        <td><strong>${resumo.titulo}</strong></td>
-                        <td>${resumo.autores}</td>
-                        <td style="text-align: center;">${linkHtml}</td>
-                    `;
-                    
-                    tbody.appendChild(tr);
-                });
-                
-            } catch (erro) {
-                console.error("Erro:", erro);
-                tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: red;">Não foi possível carregar os resumos no momento.</td></tr>';
-            }
-        });
-    </script>
+   
 </body>
 </html>
