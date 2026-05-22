@@ -71,7 +71,28 @@
             <p>A identidade visual vencedora foi criada pela discente <strong>Joanna de Ângelis Nogueira Costa</strong>
                 (2º ano do Curso Técnico em Informática).</p>
         </section>
+        <section id="galeria-fotos">
+            <h2>Galeria de Imagens do Evento</h2>
 
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <img src="/images/snct3/01.png" alt="Foto 1do Evento" class="carousel-slide">
+                    <img src="/images/snct3/02.png" alt="Foto 2 do Evento" class="carousel-slide">
+                    <img src="/images/snct3/03.png" alt="Foto 3do Evento" class="carousel-slide">
+                    <img src="/images/snct3/04.png" alt="Foto 4 do Evento" class="carousel-slide">
+
+                </div>
+
+                <button class="carousel-btn prev-btn">&#10094;</button>
+                <button class="carousel-btn next-btn">&#10095;</button>
+
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="mudarSlideDireto(0)"></span>
+                    <span class="dot" onclick="mudarSlideDireto(1)"></span>
+                    <span class="dot" onclick="mudarSlideDireto(2)"></span>
+                </div>
+            </div>
+        </section>
         <section id="resumos">
             <h2>Resumos Publicados</h2>
             <p>Confira abaixo a listagem de trabalhos e resumos simples publicados nesta edição do evento:</p>
@@ -153,6 +174,42 @@
                 console.error("Erro:", erro);
                 tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: red;">Erro ao carregar os resumos.</td></tr>';
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+            const nextButton = document.querySelector('.next-btn');
+            const prevButton = document.querySelector('.prev-btn');
+            const dots = document.querySelectorAll('.dot');
+
+            let currentIndex = 0;
+
+            function atualizarCarrossel(index) {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[index]) dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            nextButton.addEventListener('click', () => {
+                let nextIndex = (currentIndex + 1) % slides.length;
+                atualizarCarrossel(nextIndex);
+            });
+
+            prevButton.addEventListener('click', () => {
+                let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                atualizarCarrossel(prevIndex);
+            });
+
+            window.mudarSlideDireto = function (index) {
+                atualizarCarrossel(index);
+            };
+
+            setInterval(() => {
+                let nextIndex = (currentIndex + 1) % slides.length;
+                atualizarCarrossel(nextIndex);
+            }, 4000);
         });
     </script>
 </body>
