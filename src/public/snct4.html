@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana Nacional de Ciência e Tecnologia - IFNMG Campus Salinas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header class="top-header">
+        <div class="logo-placeholder">IFNMG</div>
+        <h1 class="site-title">Semana Nacional de Ciência e Tecnologia - IFNMG Campus Salinas</h1>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="https://snct-salinas.vercel.app/#apresentacao">Apresentação</a></li>
+            <li><a href="https://snct-salinas.vercel.app/#expediente">Expediente</a></li>
+            <li><a href="https://snct-salinas.vercel.app/#normas">Normas para Publicação</a></li>
+            <li><a href="https://snct-salinas.vercel.app/#edicoes">Edições dos Fascículos</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <div class="banner">
+            <img src="/images/eventos/snct4.jpg" alt="Identidade Visual do Evento - Ciência delas" class="banner-img">
+        </div>
+
+        <section id="apresentacao">
+            <h2>Sobre o Evento</h2>
+            <p>A Semana Nacional de Ciência e Tecnologia (SNCT) é realizada todos os anos pelo Ministério da Ciência,
+                Tecnologia e Inovação (MCTI) em parceria com unidades de pesquisa, agências de fomento e entidades
+                vinculadas, comunidade científica, universidades, instituições de ensino de pesquisa, escolas, museus e
+                jardins botânicos, secretarias estaduais e municipais, empresas de base tecnológica e entidades da
+                sociedade civil.</p>
+            <p>Com atuação descentralizada, a SNCT tem o objetivo de mobilizar a população em torno da importância da
+                ciência como ferramenta para geração de valor, de inovação, de riquezas, de soluções para os desafios
+                nacionais, de inclusão social e melhoria da qualidade de vida. A ciência existe para encontrar respostas
+                para os problemas, para cuidar e melhorar a vida das pessoas.</p>
+            <p>Em 2026, a <strong>IV SNCT do IFNMG - Campus Salinas</strong> traz como temática central <strong>"Ciência delas"</strong>,
+                buscando destacar, valorizar e incentivar a produção científica e o protagonismo feminino nas ciências, 
+                tecnologias e engenharias.</p>
+            <p>O evento contará com uma programação completa e diversificada, abrangendo palestras, cursos, oficinas, minicursos,
+                apresentações de trabalhos científicos, feiras e eventos culturais e artísticos voltados para toda a comunidade.</p>
+        </section>
+
+        <section id="abrangencia">
+            <h2>Eventos Integrados e Abrangência</h2>
+            <p>A quarta edição da SNCT no Campus Salinas consolida a expansão de suas fronteiras e engloba grandes eventos
+                simultâneos em sua estrutura:</p>
+            <ul>
+                <li><strong>III FICTIF:</strong> Feira de Inovação, Ciência e Tecnologia do Campus Salinas.</li>
+                <li><strong>II FEICI-SAL:</strong> Feira de Ciências, Cultura e Humanidades de Salinas, Norte de Minas
+                    Gerais: conexão entre sociedade e comunidade científica.</li>
+                <li><strong>Mostra Pedagógica:</strong> Espaço de culminância e apresentação das atividades
+                    desenvolvidas pelas Unidades Curriculares de Extensão (UCEs) do IFNMG Campus Salinas.</li>
+            </ul>
+        </section>
+
+        <section id="identidade-visual">
+            <h2>Identidade Visual</h2>
+            <p>Mantendo a tradição de valorizar a comunidade escolar, a identidade visual da edição de 2026 é inspirada no tema 
+                nacional "Ciência delas". A definição das artes oficiais do evento conta com a participação ativa e criativa 
+                dos discentes do campus Salinas, destacando o talento local no desenvolvimento da comunicação visual das atividades.</p>
+        </section>
+
+        <section id="galeria-fotos">
+            <h2>Galeria de Imagens do Evento</h2>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <img src="/images/snct4/01.png" alt="Foto 1 do Evento" class="carousel-slide">
+                    <img src="/images/snct4/02.jpg" alt="Foto 2 do Evento" class="carousel-slide">
+                    <img src="/images/snct4/03.jpg" alt="Foto 3 do Evento" class="carousel-slide">
+                    <img src="/images/snct4/04.png" alt="Foto 4 do Evento" class="carousel-slide">
+                </div>
+
+                <button class="carousel-btn prev-btn">&#10094;</button>
+                <button class="carousel-btn next-btn">&#10095;</button>
+
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="mudarSlideDireto(0)"></span>
+                    <span class="dot" onclick="mudarSlideDireto(1)"></span>
+                    <span class="dot" onclick="mudarSlideDireto(2)"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="resumos">
+            <h2>Resumos Publicados</h2>
+            <p>Confira abaixo a listagem de trabalhos e resumos simples submetidos e publicados nesta edição do evento:</p>
+
+            <table class="tabela-resumos">
+                <thead>
+                    <tr>
+                        <th>Título do Trabalho</th>
+                        <th>Autores</th>
+                        <th style="width: 110px; text-align: center;">Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-tabela-resumos">
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding: 20px;">Carregando resumos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="expediente">
+            <h2>Histórico de Realização</h2>
+            <ul>
+                <li><strong>Período de Inscrições e Submissões:</strong> Outubro de 2026</li>
+                <li><strong>Data de Calendário Nacional (MCTI):</strong> Outubro de 2026</li>
+                <li><strong>Atividades Locais no Campus Salinas:</strong> Outubro de 2026</li>
+                <li><strong>Local:</strong> IFNMG - Campus Salinas</li>
+            </ul>
+        </section>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="../index.html"
+                style="background-color: #2b5c9d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+                <i class="fa-solid fa-arrow-left"></i> Voltar para a Página Principal
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p><strong>IV Semana Nacional de Ciência e Tecnologia - IFNMG Campus Salinas</strong></p>
+        <p>Anais e Registros do Evento - 2026</p>
+    </footer>
+
+</body>
+</html>
