@@ -16,7 +16,9 @@ app.get('/', (req, res) => {
 app.get('/snct1', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'snct1.html'));
 });
-
+app.get('/snct11', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'snct11.html'));
+});
 app.get('/snct2', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'snct2.html'));
 });
